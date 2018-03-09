@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang = "zh-Hant">
+
+<head>
+    <meta charest = "utf-8">
+    <title>blog system</title>
+</head>
+
+<body>
+    <div style = 'float:left'>
+            <a href = '/'>Home</a>
+        </div>
+        <div style = 'float:right'>
+            <% if(username && authenticated){ %>
+                <a href = '/users/signout' style = 'margin:10px'>Sign Out</a>
+                <a href = '/users/add_article' style = 'margin:10px'>Add article</a>
+                <a href = '/users/profile' style = 'margin:10px'>Profile</a>
+                <span><%= username %></span>
+            <% }else{ %>
+                <a href = '/users/signin' style = 'margin:10px'>Log in</a>
+                <a href = '/users/register' style = 'margin:10px'>Register</a>
+                <a href = '/users/forget' style = 'margin:10px'>Forget password</a>
+            <% } %>
+    </div>
+
+    <div style = 'padding:50px'>
+        <h1><%= title %></h1>
+    </div>
+
+    <% for(i = 0; i < blogs.length; i++){ %>
+        <div>
+            <div style = 'float: left; margin-top: 10px;'><%= blogs[i].Username %></div>
+            <div style = 'float: right; margin-top:10px;'><%= blogs[i].CreateDate %></div>
+            <br style= 'clear:both'>
+            <p><%= blogs[i].Article %></p>
+            <a href = '/users/message/<%= blogs[i].id %>' style = 'float:right; margin-right:20px;'>Leave a message</a>
+            <hr style ='margin-top:30px'>
+        </div>
+    <% }; %>
+</body>
+
+</html>

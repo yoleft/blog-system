@@ -1,0 +1,35 @@
+<doctype html>
+    <html>
+        <head>
+            <title>Profile</title>
+        </head>
+        <body>
+            <div style = 'float:left'>
+                <a href = '/'>Home</a>
+            </div>
+            <div style = 'float:right'>
+                <a href = '/users/signout' style = 'margin:10px'>Sign Out</a>
+                <a href = '/users/add_article' style = 'margin:10px'>Add article</a>
+                <a href = '/users/profile' style = 'margin:10px'>Profile</a>
+                <span><%= username %></span>        
+            </div>
+
+            <div style = 'padding:50px'>
+                    <h1><%= title %></h1>
+            </div>
+            
+            <% for(i = 0; i < blogs.length; i++){ %>
+                <div>
+                    <div style = 'float: left; margin-top: 10px;'><%= blogs[i].Username %></div>
+                    <div style = 'float: right; margin-top:10px;'><%= blogs[i].CreateDate %></div>
+                    <br style= 'clear:both'>
+                    <p><%= blogs[i].Article %></p>
+                    <a href = '/apis/delete/<%= blogs[i].id %>' style = 'float:right; margin-top:5px;margin-right:15px;'>Delete</a>
+                    <a href = '/users/modify/<%= blogs[i].id %>' style = 'float:right; margin-top:5px;margin-right:15px;'>Modify</a>
+                    <hr style ='margin-top:30px'>
+                </div>
+            <% }; %>
+        
+        </body>
+    </html>
+</doctype>

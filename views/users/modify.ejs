@@ -1,0 +1,38 @@
+<doctype html>
+    <html>
+        <title>Modify</title>
+    </html>
+
+    <body>
+        <body>
+            <div style = 'float:left'>
+                <a href = '/'>Home</a>
+            </div>
+            <div style = 'float:right'>
+                <a href = '/users/signout' style = 'margin:10px'>Sign Out</a>
+                <a href = '/users/add_article' style = 'margin:10px'>Add article</a>
+                <a href = '/users/profile' style = 'margin:10px'>Profile</a>
+                <span><%= username %></span>        
+            </div>
+
+            <div style='padding:50px'>
+                 <form name = 'add' action = '/apis/update/<%= messageID %>' method = 'post'>
+                    <h1>Modify</h1>
+                    <div>
+                        <p>
+                            <span>Writer:</span>
+                            <label style = 'padding-right:50px'><%= username %></label>
+                        </p>
+                        <p>
+                            <textarea cols = '50' rows = '25' style = 'resize: none' name = 'Content'><%= blogs[0].Article %></textarea>
+                        </p>
+                        <div>
+                            <span style ='padding-right:377px'>
+                                <input type = 'submit' name = 'submit' value = 'Save'>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+             </div>
+    </body>
+</doctype>
