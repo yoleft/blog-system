@@ -25,6 +25,7 @@ router.post('/add', function(req, res, next){
   new Blog({
     Username: req.session.name,
     Article: req.body.Content,
+    Title: req.body.Heading,
     CreateDate: Date.now()
   }).save(function(err){
     if(err){
@@ -52,7 +53,7 @@ router.post('/update/:id', function(req, res, next){
     res.redirect('/');
     return;
   }
-  Blog.update({_id: req.params.id}, { Article: req.body.Content}, function(err){
+  Blog.update({_id: req.params.id}, {Title: req.body.Heading, Article: req.body.Content}, function(err){
     if(err){
       console.log('fail to update article');
     }else{

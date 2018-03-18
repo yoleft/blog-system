@@ -11,6 +11,8 @@ router.get('/register', function(req, res, next) {
     res.redirect('/');
     return;
   }
+  res.locals.username = req.session.name;
+  res.locals.authenticated = req.session.logined;
   res.render('users/register', {title: 'Register'});
 });
 
@@ -19,6 +21,8 @@ router.get('/signin', function(req, res, next) {
     res.redirect('/');
     return;
   }
+  res.locals.username = req.session.name;
+  res.locals.authenticated = req.session.logined;
   res.render('users/login');
 });
 
@@ -33,6 +37,8 @@ router.get('/forget', function(req, res, next) {
     res.redirect('/');
     return;
   }
+  res.locals.username = req.session.name;
+  res.locals.authenticated = req.session.logined;
   res.render('users/forget');
 });
 
@@ -43,8 +49,10 @@ router.get('/profile', function(req, res, next) {
   }
   res.locals.username = req.session.name;
   Blog.find({ Username: req.session.name }, function(err, blogs, count){
+    res.locals.username = req.session.name;
+    res.locals.authenticated = req.session.logined;
     res.render('users/profile', {
-      title : 'Blog System',
+      title : 'Profile',
       blogs: blogs
     });
   });
@@ -56,6 +64,7 @@ router.get('/add_article', function(req, res, next) {
     return;
   }
   res.locals.username = req.session.name;
+  res.locals.authenticated = req.session.logined;
   res.render('users/add_article');
 });
 
@@ -65,6 +74,7 @@ router.get('/modify/:id', function(req, res, next) {
     return;
   }
   res.locals.username = req.session.name;
+  res.locals.authenticated = req.session.logined;
   res.locals.messageID = req.params.id;
   Blog.find({_id: req.params.id}, function(err, blogs, count){
     res.render('users/modify',{

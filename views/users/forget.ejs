@@ -2,31 +2,62 @@
     <html>
         <head>
             <title>Forget Password</title>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         </head>
         <body>
-            <div style = 'float:left'>
-                <a href = '/'>Home</a>
-            </div>
-            <div style = 'float:right'>
-                <a href = '/users/signin' style = 'margin:10px'>Log in</a>
-                <a href = '/users/register' style = 'margin:10px'>Register</a>
-                <a href = '/users/forget' style = 'margin:10px'>Forget password</a>
+            <div class = "navbar navbar-default">
+                <div class = 'container-fluid'>
+                    <div class = 'navbar-header'>
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNav" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href = '/' class = "navbar-brand">Blog System</a>
+                    </div>
+        
+                    <div class="collapse navbar-collapse" id = "myNav">
+                        <ui class = "nav navbar-nav navbar-right">               
+                            <% if(username && authenticated){ %>
+                                <li><a href = '/users/add_article'>Add article</a></li>
+                                <li class = 'drop-down'>
+                                    <a href = "#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= username %><span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href = '/users/profile'>Profile</a></li>
+                                        <li><a href = '/users/signout'>Sign Out</a></li>
+                                    </ul>
+                                </li>                
+                            <% }else{ %>           
+                                <li><a href = '/users/register'>Register</a></li>
+                                <li><a href = '/users/forget'>Forget password</a></li>
+                                <li><a href = '/users/signin'>Log in</a></li>
+                            <% } %>
+                        </ui>
+                    </div>
+                </div>
             </div>
 
-            <div style = 'padding: 50px'>
+            <div class = "container col-lg-5 col-lg-offset-3">
                 <form name = 'login' action = '/apis/login' method="post">
-                    <h1>Register</h1>
-                    <p>
-                        <label style = 'padding-right:50px'>Username or e-mail</label>
-                        <input type = 'text' name = 'user' placeholder="username@example.com">
-                    </p>
-                    <p>
-                        <span style='padding-right:260px'>
-                            <input type = 'submit' name ='submit' value='Forget Password'>
-                        </span>
-                    </p>
+                    <div class = "panel panel-default">
+                        <div class = "panel-heading">
+                            <h3>Forget Password</h3>
+                        </div>
+                        <div class = "panel-body">
+                            <div class = "form-group">
+                                <label>Username or e-mail</label>
+                                <input class = "form-control" type = 'text' name = 'user' placeholder="username@example.com">
+                            </div>
+                            <input class = "btn btn-default" type = 'submit' name ='submit' value='Forget Password'>
+                        </div>
+                    </div>
                 </form>
             </div>
+            <!-- JQuery -->
+            <script src="https://code.jquery.com/jquery.js"></script>
+            <!-- bootstrap js -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         </body>
     </html>
 </doctype>
