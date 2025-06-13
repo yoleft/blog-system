@@ -14,3 +14,14 @@ This project demonstrates a basic blogging platform built with **Express**, **EJ
 Install dependencies with `npm install` and start the server with `npm start`.
 The application listens on port `3000` by default.
 
+## Docker
+
+You can run the project along with a MongoDB instance using Docker Compose.
+
+```bash
+docker-compose up --build
+```
+
+This will start the blog on port `3000` and a MongoDB database stored in the
+`mongo-data` volume.
+
